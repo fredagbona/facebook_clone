@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -18,7 +20,7 @@
 
   <div class="field">
     <%= form.label :image %><br/>
-    <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+    <%= image_tag(@post.image.url, width: "200px") if @post.image && @post.image.url %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
   </div>

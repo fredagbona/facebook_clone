@@ -1,29 +1,54 @@
-<p id="notice"><%= notice %></p>
+<style>
+  body{
+    margin: 0;
+  }
+</style>
+<div class="row">
+  <div class="col-2">
+    <p id="notice"><%= notice %></p>
+  </div>
+  <div class="col-8 ">
+    <h1 class="text-center">Posts</h1>
+    <div class="d-flex justify-content-evenly">
+        <% @posts.each do |post| %>
+            <div class="card me-4" style="width: 18rem;">
+              <% if post.image_url %>
+                <%= image_tag post.image.url , width: "250px", height: "100px", class: "card-img-top" %> <% end %>
+              <div class="card-body">
+                <h6 class="class-title">Author : <%= post.user.name %></h6>
+                <p class="card-text">Content : <%= post.content %> </p>
 
-<h1>Posts</h1>
+                <div class="card-text d-flex justify-content-between">
+                  <%= link_to post, title: "See" do %>
+                    <i class="bi bi-eye"></i>
+                  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                  <%= link_to edit_post_path(post), title: "Edit" do %>
+                    <i class="bi bi-pencil" style="color: green;"></i>
+                  <% end %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.content %></td>
-        <td><%= post.image %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                  <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete" do %>
+                    <i class="bi bi-trash" style="color: red;"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    </div>
 
-<br>
 
-<%= link_to 'New Post', new_post_path %>
+
+
+    
+    <br>
+    
+    <%= link_to 'New Post', new_post_path, class: "btn btn-primary text-white " %>
+  </div>
+  <div class="col-2"></div>
+</div>
+
+
+
+
+
+<%= render 'partials/foot' %>
