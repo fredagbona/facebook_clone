@@ -12,8 +12,18 @@
   <title>Show User</title>
 </head>
 <body>
-<h1> <%= @user.name %> </h1>
-<p> <%= @user.email %> </p>
+  <div class="row">
+    <div class="col-4">
+      <%= render 'partials/sidebar' %>
+    </div>
+    <div class="col-4 text-center">
+      
+    </div>
+    <div class="col-4">
+      
+    </div>
+  </div>
+
 <%= render 'partials/foot' %>
 </body>
 </html>
