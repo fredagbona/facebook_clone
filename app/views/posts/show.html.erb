@@ -12,7 +12,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @post.image.url, width: "200px" %>
+  <%= image_tag(@post.image.url, width: "200px") if @post.image && @post.image.url   %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
